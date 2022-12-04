@@ -2,7 +2,7 @@ package Runner;
 import Pages.Login;
 
 public class TestScript {
-	public static String testcase_id = "Demo_18_3456";
+	public static String testcase_id = "Demo_20_3456";
 	
 	public static void main(String args[])
 	{
