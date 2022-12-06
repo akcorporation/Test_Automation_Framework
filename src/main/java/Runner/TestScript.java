@@ -1,20 +1,26 @@
 package Runner;
+import java.util.List;
+
 import Pages.Login;
+import Pages.createProfile;
 
 public class TestScript {
-	public static String testcase_id = "Demo_20_3456";
+	public static int Login_count = 0;
 	
 	public static void main(String args[])
 	{
 		BaseClassImplement.PropImplementation();
-//		
-			try {
-				Login.login();
-				Login.logout();
-			} catch (InterruptedException e) {
-				System.out.println("Getting InterruptedException in Login Page :" + e.getMessage());
+		List<String> TestDataSheet = BaseClassImplement.TestSheetHandler();
+		
+		for(String list : TestDataSheet)
+		{
+			switch(list) {
+			case "Create_Profile": createProfile.createprofile(); break;
+			case "Update_Profile": BaseClassImplement.PropImplementation();
+			default: System.out.println("Sheet didn't found please check sheet name once " + list);  break;
 			}
-			
+		}
+		Login.logout();
 	}
 	
 	

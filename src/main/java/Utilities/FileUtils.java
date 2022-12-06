@@ -6,20 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import Runner.BaseClass;
-import Runner.TestScript;
+import Runner.BaseClassImplement;
 
 public class FileUtils {
 	
 	public static void copyInEvidenceFolder(File srcFile,String Filne_name) throws FileNotFoundException{
-		String Evidence_Folder_Name = TestScript.testcase_id;
-		String temp_Evidence_path = BaseClass.readProperty("EvidencePath", "global");
-		String Evidence_path = System.getProperty("user.dir")+temp_Evidence_path+"\\"+Evidence_Folder_Name;
+		String Evidence_path = BaseClassImplement.getEvidencePath();
 		String File_path = Evidence_path+"\\"+Filne_name+".png";
 		
 		File file = new File(Evidence_path);
-		Boolean dir = file.isDirectory();
-		if(!(dir)) {
+		if(!(file.isDirectory())) {
 			File directory = new File(Evidence_path);
 			directory.mkdir();
 		}

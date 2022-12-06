@@ -13,12 +13,13 @@ import Runner.BaseClass;
 import Runner.Webdriver;
 
 public class Login{
-	static WebDriver login_driver = Webdriver.initializeDriver("chrome");
+	static String BrowserName = BaseClass.readProperty("BrowserName","global").trim();
+	static WebDriver login_driver = Webdriver.initializeDriver(BrowserName);
 	static WebDriverWait driver_wait = new WebDriverWait(login_driver, Duration.ofSeconds(20));
-
+	
 	public static void login() throws InterruptedException {
 		
-//		Webdriver.captureScreenshot("Launch_UI");
+		Webdriver.captureScreenshot("Launch_UI");
 		String email_path = BaseClass.readProperty("Email_test_box","application").trim();
 		String email_content = BaseClass.readProperty("user_email","global");
 		driver_wait.until(ExpectedConditions.elementToBeClickable(By.xpath(email_path))).sendKeys(email_content);
@@ -43,11 +44,10 @@ public class Login{
 		driver_wait.until(ExpectedConditions.elementToBeClickable(By.xpath(button_path))).click();
 //		WebElement button = login_driver.findElement(By.xpath(button_path));
 //		button.click();
-		Thread.sleep(1000);
 	}
 	
 	public static void logout() {
-		Webdriver.captureScreenshot("Before_Log_off");
+		login_driver.switchTo().defaultContent();
 		String Logout_text = BaseClass.readProperty("Log_out_test","application");
 		driver_wait.until(ExpectedConditions.elementToBeClickable(login_driver.findElement(By.partialLinkText(Logout_text)))).click();
 		Webdriver.captureScreenshot("After_Log_off");
