@@ -1,6 +1,10 @@
-Pages\Login.class
 Runner\BaseClass.class
 Runner\BaseClassImplement.class
+Utilities\MyScreenRecorder.class
+Pages\createProfile.class
+Utilities\FileUtils.class
 Runner\Webdriver.class
-Encrypt\encryptClass.class
 Runner\TestScript.class
+Utilities\ExcelUtils.class
+Pages\Login.class
+Encrypt\encryptClass.class

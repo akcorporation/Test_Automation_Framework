@@ -1,5 +1,7 @@
 package Runner;
 
+import java.awt.AWTException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,6 +10,7 @@ import java.util.List;
 
 import Pages.Login;
 import Utilities.ExcelUtils;
+import Utilities.MyScreenRecorder;
 
 public class BaseClassImplement {
 	static String TestcaseName;
@@ -56,6 +59,25 @@ public class BaseClassImplement {
 			} catch (InterruptedException e) {
 				System.out.println(" Getting Interrupted Exception while Login " + e.getMessage());
 			}
+		}
+	}
+	
+	public static void checkRecordingRequired(String function) {
+		try {
+			String checkFunction = BaseClass.readProperty("ScreenRecording", "global");
+			if(checkFunction.equalsIgnoreCase("True")) {
+				if(function.equalsIgnoreCase("Start")) {
+					MyScreenRecorder.startRecording();
+				}
+				else if(function.equalsIgnoreCase("Stop")) {
+					MyScreenRecorder.stopRecording();
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Getting IO Exception while " + function + " recording :" + e.getMessage());
+		}
+		catch (AWTException e) {
+			System.out.println("Getting AWT Exception while " + function + " recording :" + e.getMessage());
 		}
 	}
 }

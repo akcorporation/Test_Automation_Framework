@@ -15,25 +15,19 @@ import Runner.Webdriver;
 import Utilities.ExcelUtils;
 
 public class createProfile {
+	static String Name = null;
+	static String Password = null;
+	static String ConfirmPassword = null;
+	static String TestCaseName = null;
 
 	public static void createprofile() {
 		List<HashMap<String,String>> TestData =  ExcelUtils.getTestData("Create_Profile");
-		String Name = null;
-		String Password = null;
-		String ConfirmPassword = null;
-		String TestCaseName = null;
 		
 		for(HashMap<String, String> list : TestData)
 		{
 			if(list.get("Execution_Flag").equalsIgnoreCase("Yes")) {
 				
-				Name = list.get("Name");
-				Password = list.get("Password");
-				ConfirmPassword = list.get("ConfirmPassword");
-				TestCaseName = list.get("TestCaseName");
-				
-				BaseClassImplement.getTestCaseName(TestCaseName);
-				
+				TestCaseDetails(list);
 				BaseClassImplement.checkLogin();
 				WebDriver driver = Webdriver.getDriver();
 				WebDriverWait driver_wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -60,8 +54,19 @@ public class createProfile {
 				
 				Webdriver.HandleALert();
 				Webdriver.captureScreenshot("Before_Log_off");
+				BaseClassImplement.checkRecordingRequired("Stop");
 			}	
 		}
 		
+	}
+	
+	public static void TestCaseDetails(HashMap<String, String> list) {
+		Name = list.get("Name");
+		Password = list.get("Password");
+		ConfirmPassword = list.get("ConfirmPassword");
+		TestCaseName = list.get("TestCaseName");
+		
+		BaseClassImplement.getTestCaseName(TestCaseName);
+		BaseClassImplement.checkRecordingRequired("Start");
 	}
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-12-12T18:18:53 IST" name="Default suite" finished-at="2022-12-12T18:19:10 IST" duration-ms="16889">
+    <groups>
+    </groups>
+    <test started-at="2022-12-12T18:18:53 IST" name="Default test" finished-at="2022-12-12T18:19:10 IST" duration-ms="16889">
+      <class name="RunnerClass.RunnerScript">
+        <test-method signature="printmessage()[pri:0, instance:RunnerClass.RunnerScript@3c407114]" started-at="2022-12-12T18:18:53 IST" name="printmessage" finished-at="2022-12-12T18:19:10 IST" duration-ms="16839" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- printmessage -->
+      </class> <!-- RunnerClass.RunnerScript -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
